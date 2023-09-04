@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../../utils/api";
 import { ArticleCard } from "./ArticleCard";
+import { Link } from "react-router-dom";
 
 export const ArticlesView = () => {
   const [articles, setArticles] = useState([]);
@@ -12,8 +13,8 @@ export const ArticlesView = () => {
     getArticles().then((data) => {
             setIsLoading(false);
 setArticles(data)
-    }).then((err) => {
-        confirm.log(err)
+    }).catch((err) => {
+        console.log(err)
         setIsLoading(false)
         setIsError(true)
     });
@@ -32,12 +33,14 @@ if(isError) return (
       {articles.map(({ author, title, article_img_url, topic, article_id }) => {
         return (
           <section key={article_id}>
+            <Link to={`/articles/${article_id}`} >
             <ArticleCard
               author={author}
               title={title}
               article_img_url={article_img_url}
               topic={topic}
             />
+            </Link>
           </section>
         );
       })}
