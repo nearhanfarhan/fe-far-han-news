@@ -4,14 +4,27 @@ import { getArticleById } from "../../utils/api";
 
 export const SingleArticleView = () => {
   const [singleArticle, setSingleArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(false)
+const [isError, setIsError] = useState(false)
+
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleById(article_id).then((data) => {
+    setIsLoading(true)
+    getArticleById(article_id).
+    then((data) => {
+        setIsLoading(false)
       setSingleArticle(data);
+    }).catch((err) =>{
+        setIsLoading(false)
+        setIsError(true)
     });
   }, []);
 
+  if(isLoading) return <h2>Loading...</h2>
+
+  if(isError) return <h2>There was an error!</h2>
+  
   return (
     <section className="single-article">
       <h2>{singleArticle.title}</h2>

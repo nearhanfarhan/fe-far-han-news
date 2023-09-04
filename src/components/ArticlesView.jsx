@@ -29,10 +29,10 @@ if(isError) return (
 
 
   return (
-    <section className="articles-card">
+    <section className="cards">
       {articles.map(({ author, title, article_img_url, topic, article_id }) => {
         return (
-          <section key={article_id}>
+          <section key={article_id} className="card">
             <Link to={`/articles/${article_id}`} >
             <ArticleCard
               author={author}
