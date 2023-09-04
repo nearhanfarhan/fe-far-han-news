@@ -17,3 +17,10 @@ export const getArticleById = (article_id) => {
     return response.data.article;
   });
 };
+
+export const getCommentsByArticleId = (article_id) => {
+const endpoint = `/api/articles/${article_id}/comments`
+return newsApi.get(endpoint).then((response) =>{
+    return response.data.comments
+})
+}
