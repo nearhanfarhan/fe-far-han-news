@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { Homepage } from "./components/Homepage";
 import { ArticlesView } from "./components/ArticlesView";
 import { SingleArticleView } from "./components/SingleArticleView";
+import { CommentsView } from "./components/CommentsView";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/articles" element={<ArticlesView />}/>
         <Route path="/articles/:article_id" element={<SingleArticleView />} />
+        <Route path="articles/:article_id/comments" element={<CommentsView />} />
       </Routes>
     </div>
   );
