@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-    baseURL: 'https://far-han-news.onrender.com'
-})
+  baseURL: "https://far-han-news.onrender.com",
+});
 
 export const getArticles = () => {
   const endpoint = `/api/articles`;
@@ -19,8 +19,15 @@ export const getArticleById = (article_id) => {
 };
 
 export const getCommentsByArticleId = (article_id) => {
-const endpoint = `/api/articles/${article_id}/comments`
-return newsApi.get(endpoint).then((response) =>{
-    return response.data.comments
-})
-}
+  const endpoint = `/api/articles/${article_id}/comments`;
+  return newsApi.get(endpoint).then((response) => {
+    return response.data.comments;
+  });
+};
+
+export const updateCommentVote = (comment_id, vote) => {
+  const endpoint = `/api/comments/${comment_id}`;
+  return newsApi.patch(endpoint, { inc_votes: vote }).then((response) => {
+    return response.data.comment;
+  });
+};
