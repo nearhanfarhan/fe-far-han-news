@@ -8,3 +8,10 @@ export const getArticles = () => {
     return response.data.articles;
   });
 };
+
+export const getArticleById = (article_id) => {
+  const endpoint = `/api/articles/${article_id}`;
+  return axios.get(`${BASE_URL}${endpoint}`).then((response) => {
+    return response.data.article;
+  });
+};
