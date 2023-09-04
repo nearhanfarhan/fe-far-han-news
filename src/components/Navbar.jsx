@@ -12,6 +12,9 @@ export const Navbar = () => {
       <li>
         <a href="contact.asp">Users</a>
       </li>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
     </ul>
   );
 };
