@@ -15,9 +15,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/articles" element={<ArticlesView />}/>
-        <Route path="/articles/:article_id" element={<SingleArticleView />} />
-        <Route path="articles/:article_id/comments" element={<CommentsView />} />
+        <Route path="/articles" element={<ArticlesView />} />
+        <Route
+          path="/articles/:article_id"
+          element={<SingleArticleView />}/>
       </Routes>
     </div>
   );

@@ -27,9 +27,24 @@ export const getCommentsByArticleId = (article_id) => {
 
 export const updateCommentVote = (comment_id, vote) => {
   const endpoint = `/api/comments/${comment_id}`;
-  const body = { inc_votes: vote }
-  console.log(endpoint)
-  return newsApi.patch(endpoint, { inc_votes: vote }).then((response) => {
+  const data = { inc_votes: vote };
+  return newsApi.patch(endpoint, data).then((response) => {
     return response.data.comment;
+  });
+};
+
+export const postCommentByArticleId = (article_id, author, body) => {
+  const endpoint = `/api/articles/${article_id}/comments`;
+  const data = { author, body };
+  return newsApi.post(endpoint, data).then((response) => {
+    return response.data.comment;
+  });
+};
+
+export const updateArticleVote = (article_id, inc_votes) => {
+  const endpoint = `/api/articles/${article_id}`;
+  const data = {inc_votes };
+  return newsApi.patch(endpoint, data).then((response) => {
+    return response.data.article;
   });
 };

@@ -15,12 +15,9 @@ export const CommentCard = ({
   const [isError, setIsError] = useState(false);
 
   const patchCommentVote = (vote) => {
-    setIsLoading(true);
     updateCommentVote(comment_id, vote)
-      .then(() => setIsLoading(false))
       .catch((err) => {
         console.log(err);
-        setIsLoading(false);
         setIsError(true);
       });
   };
