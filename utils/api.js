@@ -4,11 +4,18 @@ const newsApi = axios.create({
   baseURL: "https://far-han-news.onrender.com",
 });
 
-export const getArticles = () => {
-  const endpoint = `/api/articles`;
-  return newsApi.get(endpoint).then((response) => {
-    return response.data.articles;
-  });
+export const getArticles = (topic) => {
+  if (topic) {
+    const endpoint = `/api/articles?topic=${topic}`;
+    return newsApi.get(endpoint).then((response) => {
+      return response.data.articles;
+    });
+  } else {
+    const endpoint = `/api/articles`;
+    return newsApi.get(endpoint).then((response) => {
+      return response.data.articles;
+    });
+  }
 };
 
 export const getArticleById = (article_id) => {
@@ -43,8 +50,15 @@ export const postCommentByArticleId = (article_id, author, body) => {
 
 export const updateArticleVote = (article_id, inc_votes) => {
   const endpoint = `/api/articles/${article_id}`;
-  const data = {inc_votes };
+  const data = { inc_votes };
   return newsApi.patch(endpoint, data).then((response) => {
     return response.data.article;
+  });
+};
+
+export const getTopics = () => {
+  const endpoint = `/api/topics`;
+  return newsApi.get(endpoint).then((response) => {
+    return response.data.topics;
   });
 };

@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <ul>
+    <ul className="navbar">
       <li>
-       <Link to="/articles">Articles</Link>
+        <Link to="/articles">Articles</Link>
       </li>
       <li>
-        <a href="news.asp">Topics</a>
+        <Link to="/topics">Topics</Link>
       </li>
       <li>
         <a href="contact.asp">Users</a>
