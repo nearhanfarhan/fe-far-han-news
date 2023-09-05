@@ -27,6 +27,8 @@ export const getCommentsByArticleId = (article_id) => {
 
 export const updateCommentVote = (comment_id, vote) => {
   const endpoint = `/api/comments/${comment_id}`;
+  const body = { inc_votes: vote }
+  console.log(endpoint)
   return newsApi.patch(endpoint, { inc_votes: vote }).then((response) => {
     return response.data.comment;
   });

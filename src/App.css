@@ -46,3 +46,16 @@
   border-color: 1px black;
   margin: 10px;
 }
+
+.kudos-button{
+  border-style: solid;
+  border-color: 1px black;
+  margin: 5px;
+}
+
+.kudos-button-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
