@@ -27,7 +27,7 @@ export const CommentsView = ({ setDisplayComments }) => {
 
   if (isLoading) return <h2>Loading...</h2>;
   if (isError) return <h2>There was an error!</h2>;
-console.log(comments)
+
   return (
     <div className="comments-container">
       <button onClick={() => setDisplayComments(false)}>Close comments</button>
