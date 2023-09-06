@@ -8,7 +8,6 @@ export const SingleArticleView = () => {
   const [displayComments, setDisplayComments] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [articles, setArticles] = useState([])
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -27,7 +26,6 @@ export const SingleArticleView = () => {
   const patchArticleVote = (vote) => {
     updateArticleVote(article_id, vote).catch((err) => {
       setIsError(true);
-      console.log(err);
     });
   };
   const renderArticleVote = (vote) => {

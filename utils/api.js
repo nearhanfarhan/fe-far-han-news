@@ -4,19 +4,16 @@ const newsApi = axios.create({
   baseURL: "https://far-han-news.onrender.com",
 });
 
-export const getArticles = (topic) => {
-  if (topic) {
-    const endpoint = `/api/articles?topic=${topic}`;
-    return newsApi.get(endpoint).then((response) => {
-      return response.data.articles;
-    });
-  } else {
-    const endpoint = `/api/articles`;
+export const getArticles = (topic, sortBy, sortOrder) => {
+  let endpoint = `/api/articles`
+  if (topic||sortBy) endpoint += `?`
+  if (topic) endpoint += `topic=${topic}`;
+  if (topic&&sortBy) endpoint += `&`
+  if (sortBy) endpoint += `sort_by=${sortBy}&order=${sortOrder}`
     return newsApi.get(endpoint).then((response) => {
       return response.data.articles;
     });
   }
-};
 
 export const getArticleById = (article_id) => {
   const endpoint = `/api/articles/${article_id}`;

@@ -19,7 +19,6 @@ export const CommentsView = ({ setDisplayComments }) => {
         setComments(data);
       })
       .catch((err) => {
-        console.log(err);
         setIsLoading(false);
         setIsError(true);
       });
