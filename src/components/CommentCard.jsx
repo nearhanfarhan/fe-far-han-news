@@ -17,7 +17,6 @@ export const CommentCard = ({
   const patchCommentVote = (vote) => {
     updateCommentVote(comment_id, vote)
       .catch((err) => {
-        console.log(err);
         setIsError(true);
       });
   };

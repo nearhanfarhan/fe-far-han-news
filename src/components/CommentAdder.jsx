@@ -12,7 +12,6 @@ export const CommentAdder = ({article_id, setComments}) => {
     postCommentByArticleId(article_id, user, newComment)
       .catch((err) => {
         setIsError(true)
-        console.log(err);
       });
     setNewComment("");
   };
