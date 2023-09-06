@@ -7,6 +7,7 @@ import { ArticlesView } from "./components/ArticlesView";
 import { SingleArticleView } from "./components/SingleArticleView";
 import { CommentsView } from "./components/CommentsView";
 import { TopicsView } from "./components/TopicsView";
+import { UsersView } from "./components/UsersView";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +23,7 @@ function App() {
           element={<SingleArticleView />}/>
           <Route path="/topics" element={<TopicsView />} />
           <Route path="/:topics/articles" element={<ArticlesView/>}/>
+          <Route path="/users" element={<UsersView />}/>
       </Routes>
     </div>
   );

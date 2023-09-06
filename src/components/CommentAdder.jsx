@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { postCommentByArticleId } from "../../utils/api";
+import { UserContext } from "./Users";
 
 export const CommentAdder = ({article_id, setComments}) => {
   const [newComment, setNewComment] = useState("");
   const [isError, setIsError] = useState(false)
-  const user = "grumpy19"
-
+  const {user} = useContext(UserContext)
   const handleSubmit = (event) => {
     event.preventDefault();
     updateComments({author:user, body:newComment, created_at:Date.now()})
