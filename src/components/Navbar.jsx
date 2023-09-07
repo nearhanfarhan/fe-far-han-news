@@ -4,16 +4,16 @@ export const Navbar = () => {
   return (
     <ul className="navbar">
       <li>
-        <Link to="/articles">Articles</Link>
+       <Link to="/articles" className="link">Articles</Link>
       </li>
       <li>
-        <Link to="/topics">Topics</Link>
+      <Link to="/topics" className="link">Topics</Link>
       </li>
       <li>
-      <Link to="/users">Users</Link>
+      <Link to="/users" className="link">Users</Link>
       </li>
       <li>
-        <Link to="/">Home</Link>
+      <Link to="/" className="link">Home</Link>
       </li>
     </ul>
   );

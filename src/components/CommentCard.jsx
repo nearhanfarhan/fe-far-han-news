@@ -17,6 +17,7 @@ export const CommentCard = ({
   const [errorMsg, setErrorMsg] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [voted, setVoted] = useState(false)
   const { user } = useContext(UserContext);
 
   const patchCommentVote = (vote) => {
@@ -63,35 +64,36 @@ export const CommentCard = ({
     <section>
       <h4>by {author}</h4>
       <p>{body}</p>
-      <h6>{votes} votes</h6>
+      <h4>{votes} votes</h4>
       <div>
         {comment_id && author === user ? (
           <button onClick={handleDelete}>Delete Comment</button>
         ) : comment_id && author !== user ? (
+          voted? (<h3>Thanks for your vote!</h3>):(
           <div className="kudos-button-container">
-            <button className="kudos-button">
+            <button className="button" onClick={()=>{setVoted(true)}}>
               <img
                 src="../../resources/thumbs_up.png"
                 alt="thumbs up emoji"
-                width="40%"
+                width="25%"
                 onClick={() => {
                   patchCommentVote(1);
                   renderCommentVote(1);
                 }}
               />
             </button>
-            <button className="kudos-button">
+            <button className="button" onClick={()=>{setVoted(true)}}>
               <img
                 src="../../resources/thumbs_down.png"
                 alt="thumbs down emoji"
-                width="40%"
+                width="25%"
                 onClick={() => {
                   patchCommentVote(-1);
                   renderCommentVote(-1);
                 }}
               />
             </button>
-          </div>
+          </div>)
         ) : null}
       </div>
       <DateTimeDisplay dateTimeString={created_at} />

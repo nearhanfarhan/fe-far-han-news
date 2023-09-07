@@ -1,7 +1,7 @@
 Stories I want to add still
 
 -vote on articles with rendering x
--comment on articles with optimisitc rendering ~
+-comment on articles with optimistic rendering ~
 -need to log in to post comments x
 -delete comments by logged in user x
 -delete articles by logged in user 

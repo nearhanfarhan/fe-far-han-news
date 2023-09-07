@@ -14,7 +14,7 @@ export const Header = () => {
           <button onClick={(() =>{setUser("")})}>Log out</button>
         </div>
       ) : (
-        <Link to="/users">Log in</Link>
+        <button className="button"><Link to="/users">Log in</Link></button>
       )}
       <Navbar />
     </>

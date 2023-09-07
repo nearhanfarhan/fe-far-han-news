@@ -37,7 +37,7 @@ export const CommentsView = ({ setDisplayComments }) => {
 
   return (
     <div className="comments-container">
-      <button onClick={() => setDisplayComments(false)}>Close comments</button>
+      <button onClick={() => setDisplayComments(false)} className="comments-button">Close comments</button>
       <CommentAdder article_id={article_id} setComments={setComments} />
       <section className="cards">
         {comments.map(({ comment_id, body, author, votes, created_at }) => {

@@ -9,6 +9,7 @@ export const SingleArticleView = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null)
+  const [voted, setVoted] = useState(false)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -55,8 +56,9 @@ export const SingleArticleView = () => {
         width="100%"
       />
       <h4>{singleArticle.votes} likes</h4>
+      {voted? (<h2>Thanks for your vote!</h2>):(
       <div className="kudos-button-container">
-        <button className="kudos-button">
+        <button className="button" onClick={()=>{setVoted(true)}}>
           <img
             src="../../resources/thumbs_up.png"
             alt="thumbs up emoji"
@@ -67,7 +69,7 @@ export const SingleArticleView = () => {
             }}
           />
         </button>
-        <button className="kudos-button">
+        <button className="button" onClick={()=>{setVoted(true)}}>
           <img
             src="../../resources/thumbs_down.png"
             alt="thumbs down emoji"
@@ -78,12 +80,12 @@ export const SingleArticleView = () => {
             }}
           />
         </button>
-      </div>
+      </div>)}
       <div>
         {displayComments ? (
           <CommentsView setDisplayComments={setDisplayComments} />
         ) : (
-          <button onClick={() => setDisplayComments(true)}>
+          <button onClick={() => setDisplayComments(true)} className="comments-button">
             Click to view {singleArticle.comment_count} comments
           </button>
         )}

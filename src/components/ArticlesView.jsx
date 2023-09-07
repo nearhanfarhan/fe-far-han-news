@@ -49,7 +49,7 @@ export const ArticlesView = () => {
           }) => {
             return (
               <section key={article_id} className="card">
-                <Link to={`/articles/${article_id}`}>
+                <Link to={`/articles/${article_id}`} className="link">
                   <ArticleCard
                     author={author}
                     title={title}

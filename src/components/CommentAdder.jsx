@@ -40,7 +40,7 @@ export const CommentAdder = ({article_id, setComments}) => {
         value={newComment}
         onChange={(event) => setNewComment(event.target.value)}
       />
-      <button type="submit">Add comment</button>
+      {newComment? (<button type="submit">Add comment</button>):(<></>)}
     </form>) : (<p><Link to="/users">Log in </Link>to post a comment</p>)}
    </>
   );

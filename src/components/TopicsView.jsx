@@ -35,8 +35,8 @@ export const TopicsView = () => {
       {topics.map(({ slug, description }) => {
         return (
           <section key={slug} className="card">
-              <Link to={`/${slug}/articles`}>
-              <h2>{slug}</h2>
+              <Link to={`/${slug}/articles`} className="link">
+              <h3>{slug}</h3>
               <h5>{description}</h5>
           </Link>
             </section>
