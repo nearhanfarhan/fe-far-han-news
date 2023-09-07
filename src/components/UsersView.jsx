@@ -14,8 +14,6 @@ export const UsersView = () => {
         })
     },[])
 
-    console.log(users)
-
     if (isLoading) return <h2>Loading...</h2>;
     if (isError) return <h2>There was an error!</h2>;
   
