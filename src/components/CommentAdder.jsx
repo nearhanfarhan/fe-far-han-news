@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export const CommentAdder = ({article_id, setComments}) => {
   const [newComment, setNewComment] = useState("");
   const [isError, setIsError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
   const {user} = useContext(UserContext)
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +14,7 @@ export const CommentAdder = ({article_id, setComments}) => {
     postCommentByArticleId(article_id, user, newComment)
       .catch((err) => {
         setIsError(true)
+        setErrorMsg(err);
       });
     setNewComment("");
   };
@@ -22,7 +24,12 @@ export const CommentAdder = ({article_id, setComments}) => {
       return [comment, ...currentComments];
     });
   };
-  if (isError) return <h2>Something went wrong! Please try again</h2>;
+  if (isError)
+    return (
+      <h2>
+        {errorMsg.response.status}: {errorMsg.response.data.msg}
+      </h2>
+    );
   
   return (
     <>

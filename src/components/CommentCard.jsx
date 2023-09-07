@@ -14,13 +14,15 @@ export const CommentCard = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [isDeleted, setIsDeleted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const { user } = useContext(UserContext);
 
   const patchCommentVote = (vote) => {
     updateCommentVote(comment_id, vote).catch((err) => {
       setIsError(true);
+      setErrorMsg(err);
     });
   };
 
@@ -33,62 +35,66 @@ export const CommentCard = ({
   };
 
   const handleDelete = () => {
-    setIsDeleting(true)
-    deleteCommentById(comment_id).then((data) => {
-      if(data === 204){
-        setIsDeleting(false)
-        setIsDeleted(true)
-      }
-    }).catch((err) => {
-      setIsDeleting(false)
-      setIsError(true)
-    })
+    setIsDeleting(true);
+    deleteCommentById(comment_id)
+      .then((data) => {
+        if (data === 204) {
+          setIsDeleting(false);
+          setIsDeleted(true);
+        }
+      })
+      .catch((err) => {
+        setIsDeleting(false);
+        setIsError(true);
+      });
   };
 
   if (isLoading) return <h2>Loading...</h2>;
-  if (isError) return <h2>There was an error!</h2>;
-  if (isDeleting) return <h2>Deleting...</h2>
-  if (isDeleted) return <h2>Deleted successfully</h2>
-
+  if (isError)
+    return (
+      <h2>
+        {errorMsg.response.status}: {errorMsg.response.data.msg}
+      </h2>
+    );
+  if (isDeleting) return <h2>Deleting...</h2>;
+  if (isDeleted) return <h2>Deleted successfully</h2>;
 
   return (
     <section>
-      {" "}
       <h4>by {author}</h4>
       <p>{body}</p>
       <h6>{votes} votes</h6>
-      
-      
-      {author === user ? (
+      <div>
+        {comment_id && author === user ? (
           <button onClick={handleDelete}>Delete Comment</button>
-        ) : (
+        ) : comment_id && author !== user ? (
           <div className="kudos-button-container">
-        <button className="kudos-button">
-          <img
-            src="../../resources/thumbs_up.png"
-            alt="thumbs up emoji"
-            width="40%"
-            onClick={() => {
-              patchCommentVote(1);
-              renderCommentVote(1);
-            }}
-          />
-        </button>
-        <button className="kudos-button">
-          <img
-            src="../../resources/thumbs_down.png"
-            alt="thumbs down emoji"
-            width="40%"
-            onClick={() => {
-              patchCommentVote(-1);
-              renderCommentVote(-1);
-            }}
-          />
-        </button>
-       
-      </div> 
-        )}
-      <DateTimeDisplay dateTimeString={created_at} />{" "}
+            <button className="kudos-button">
+              <img
+                src="../../resources/thumbs_up.png"
+                alt="thumbs up emoji"
+                width="40%"
+                onClick={() => {
+                  patchCommentVote(1);
+                  renderCommentVote(1);
+                }}
+              />
+            </button>
+            <button className="kudos-button">
+              <img
+                src="../../resources/thumbs_down.png"
+                alt="thumbs down emoji"
+                width="40%"
+                onClick={() => {
+                  patchCommentVote(-1);
+                  renderCommentVote(-1);
+                }}
+              />
+            </button>
+          </div>
+        ) : null}
+      </div>
+      <DateTimeDisplay dateTimeString={created_at} />
     </section>
   );
 };

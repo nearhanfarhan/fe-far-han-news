@@ -8,6 +8,7 @@ import { SingleArticleView } from "./components/SingleArticleView";
 import { CommentsView } from "./components/CommentsView";
 import { TopicsView } from "./components/TopicsView";
 import { UsersView } from "./components/UsersView";
+import { ErrorPage } from "./components/ErrorPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/articles" element={<ArticlesView />} />
         <Route

@@ -8,7 +8,7 @@ export const ArticlesView = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
+  const [errorMsg, setErrorMsg] = useState(null);
   const { topics } = useParams();
 
   useEffect(() => {
@@ -19,17 +19,22 @@ export const ArticlesView = () => {
         setArticles(data);
       })
       .catch((err) => {
-        console.log(err);
         setIsLoading(false);
         setIsError(true);
+        setErrorMsg(err);
       });
   }, []);
   if (isLoading) return <h2>Loading...</h2>;
-  if (isError) return <h2>There was an error!</h2>;
+  if (isError)
+    return (
+      <h2>
+        {errorMsg.response.status}: {errorMsg.response.data.msg}
+      </h2>
+    );
 
   return (
     <>
-      <SortArticlesForm topics={topics} setArticles={setArticles}/>
+      <SortArticlesForm topics={topics} setArticles={setArticles} />
       <section className="cards">
         {articles.map(
           ({

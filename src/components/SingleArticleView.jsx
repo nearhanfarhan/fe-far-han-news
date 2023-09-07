@@ -8,6 +8,7 @@ export const SingleArticleView = () => {
   const [displayComments, setDisplayComments] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -20,12 +21,14 @@ export const SingleArticleView = () => {
       .catch((err) => {
         setIsLoading(false);
         setIsError(true);
+        setErrorMsg(err)
       });
   }, []);
 
   const patchArticleVote = (vote) => {
     updateArticleVote(article_id, vote).catch((err) => {
       setIsError(true);
+      setErrorMsg(err)
     });
   };
   const renderArticleVote = (vote) => {
@@ -38,7 +41,7 @@ export const SingleArticleView = () => {
 
   if (isLoading) return <h2>Loading...</h2>;
 
-  if (isError) return <h2>There was an error!</h2>;
+  if (isError) return <h2>{errorMsg.response.status}: {errorMsg.response.data.msg}</h2>;
 
   return (
     <section className="single-article">

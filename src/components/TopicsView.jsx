@@ -6,6 +6,8 @@ export const TopicsView = () => {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -16,11 +18,17 @@ export const TopicsView = () => {
       })
       .catch((err) => {
         setIsError(true);
+        setErrorMsg(err);
       });
   }, []);
 
   if (isLoading) return <h2>Loading...</h2>;
-  if (isError) return <h2>There was an error!</h2>;
+  if (isError)
+    return (
+      <h2>
+        {errorMsg.response.status}: {errorMsg.response.data.msg}
+      </h2>
+    );
 
   return (
     <section className="cards">
