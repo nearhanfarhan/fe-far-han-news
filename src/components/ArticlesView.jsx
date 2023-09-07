@@ -39,6 +39,8 @@ export const ArticlesView = () => {
             topic,
             article_id,
             created_at,
+            comment_count,
+            votes,
           }) => {
             return (
               <section key={article_id} className="card">
@@ -49,6 +51,8 @@ export const ArticlesView = () => {
                     article_img_url={article_img_url}
                     topic={topic}
                     created_at={created_at}
+                    comment_count={comment_count}
+                    votes={votes}
                   />
                 </Link>
               </section>

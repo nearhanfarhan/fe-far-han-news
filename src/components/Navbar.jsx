@@ -10,7 +10,7 @@ export const Navbar = () => {
         <Link to="/topics">Topics</Link>
       </li>
       <li>
-        <a href="contact.asp">Users</a>
+      <Link to="/users">Users</Link>
       </li>
       <li>
         <Link to="/">Home</Link>

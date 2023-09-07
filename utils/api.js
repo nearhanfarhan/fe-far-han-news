@@ -59,3 +59,17 @@ export const getTopics = () => {
     return response.data.topics;
   });
 };
+
+export const deleteCommentById = (comment_id) => {
+  const endpoint = `/api/comments/${comment_id}`
+  return newsApi.delete(endpoint).then((response) => {
+    return response.status
+  })
+}
+
+export const getUsers = () => {
+  const endpoint = `/api/users`
+  return newsApi.get(endpoint).then((response) => {
+    return response.data.users
+  })
+}
