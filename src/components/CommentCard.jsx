@@ -71,7 +71,7 @@ export const CommentCard = ({
         ) : comment_id && author !== user ? (
           voted? (<h3>Thanks for your vote!</h3>):(
           <div className="kudos-button-container">
-            <button className="button" onClick={()=>{setVoted(true)}}>
+            <button className="kudos-button" onClick={()=>{setVoted(true)}}>
               <img
                 src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44d.svg"
                 alt="thumbs up emoji"
@@ -82,7 +82,7 @@ export const CommentCard = ({
                 }}
               />
             </button>
-            <button className="button" onClick={()=>{setVoted(true)}}>
+            <button className="kudos-button" onClick={()=>{setVoted(true)}}>
               <img
                 src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44e.svg"
                 alt="thumbs down emoji"

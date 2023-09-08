@@ -5,15 +5,15 @@ const newsApi = axios.create({
 });
 
 export const getArticles = (topic, sortBy, sortOrder) => {
-  let endpoint = `/api/articles`
-  if (topic||sortBy) endpoint += `?`
+  let endpoint = `/api/articles`;
+  if (topic || sortBy) endpoint += `?`;
   if (topic) endpoint += `topic=${topic}`;
-  if (topic&&sortBy) endpoint += `&`
-  if (sortBy) endpoint += `sort_by=${sortBy}&order=${sortOrder}`
-    return newsApi.get(endpoint).then((response) => {
-      return response.data.articles;
-    });
-  }
+  if (topic && sortBy) endpoint += `&`;
+  if (sortBy) endpoint += `sort_by=${sortBy}&order=${sortOrder}`;
+  return newsApi.get(endpoint).then((response) => {
+    return response.data.articles;
+  });
+};
 
 export const getArticleById = (article_id) => {
   const endpoint = `/api/articles/${article_id}`;
@@ -61,15 +61,25 @@ export const getTopics = () => {
 };
 
 export const deleteCommentById = (comment_id) => {
-  const endpoint = `/api/comments/${comment_id}`
+  const endpoint = `/api/comments/${comment_id}`;
   return newsApi.delete(endpoint).then((response) => {
-    return response.status
-  })
-}
+    return response.status;
+  });
+};
 
 export const getUsers = () => {
-  const endpoint = `/api/users`
+  const endpoint = `/api/users`;
   return newsApi.get(endpoint).then((response) => {
-    return response.data.users
-  })
-}
+    return response.data.users;
+  });
+};
+
+export const postArticle = (article) => {
+  console.log("in this function")
+  const endpoint = `/api/articles`;
+  console.log(article)
+  return newsApi.post(endpoint, article).then((response) => {
+    console.log(response)
+    return response.data.article;
+  });
+};

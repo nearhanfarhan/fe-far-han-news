@@ -8,7 +8,6 @@ export const TopicsView = () => {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
-
   useEffect(() => {
     setIsLoading(true);
     getTopics()
@@ -31,17 +30,19 @@ export const TopicsView = () => {
     );
 
   return (
-    <section className="cards">
-      {topics.map(({ slug, description }) => {
-        return (
-          <section key={slug} className="card">
+    <div className="home-page">
+      <section className="cards">
+        {topics.map(({ slug, description }) => {
+          return (
+            <section key={slug} className="card">
               <Link to={`/${slug}/articles`} className="link">
-              <h3>{slug}</h3>
-              <h5>{description}</h5>
-          </Link>
+                <h3>{slug}</h3>
+                <h5>{description}</h5>
+              </Link>
             </section>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+    </div>
   );
 };

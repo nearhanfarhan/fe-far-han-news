@@ -52,13 +52,13 @@ export const SingleArticleView = () => {
       <p>{singleArticle.body}</p>
       <img
         src={singleArticle.article_img_url}
-        alt={`image relating to ${singleArticle.topic}`}
-        width="100%"
+        alt={`image relating to ${singleArticle.topic}`
+      }className="article-img"
       />
-      <h4>{singleArticle.votes} likes</h4>
+      <h2>{singleArticle.votes} likes</h2>
       {voted? (<h2>Thanks for your vote!</h2>):(
       <div className="kudos-button-container">
-        <button className="button" onClick={()=>{setVoted(true)}}>
+        <button className="kudos-button" onClick={()=>{setVoted(true)}}>
           <img
             src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44d.svg"
             alt="thumbs up emoji"
@@ -69,7 +69,7 @@ export const SingleArticleView = () => {
             }}
           />
         </button>
-        <button className="button" onClick={()=>{setVoted(true)}}>
+        <button className="kudos-button" onClick={()=>{setVoted(true)}}>
           <img
             src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44e.svg"
             alt="thumbs down emoji"

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getArticles } from "../../utils/api";
 import { ArticleCard } from "./ArticleCard";
 import { Link, useParams } from "react-router-dom";
 import { SortArticlesForm } from "./SortArticlesForm";
+import { UserContext } from "./Users";
 
 export const ArticlesView = () => {
   const [articles, setArticles] = useState([]);
@@ -10,6 +11,7 @@ export const ArticlesView = () => {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const { topics } = useParams();
+  const {user} = useContext(UserContext)
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,6 +36,7 @@ export const ArticlesView = () => {
 
   return (
     <>
+    {user? (<Link to="/articles/submit" ><button className = "button">Submit an article</button></Link>):(<h5><Link to="/users" >Log in </Link>to submit an article</h5>)}
       <SortArticlesForm topics={topics} setArticles={setArticles} />
       <section className="cards">
         {articles.map(

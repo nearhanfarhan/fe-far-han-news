@@ -34,13 +34,13 @@ export const CommentAdder = ({article_id, setComments}) => {
   return (
 <div className="add-comments-form">
   {user ? (
-    <form className="comment-adder" onSubmit={handleSubmit}>
+    <form className="text-adder" onSubmit={handleSubmit}>
       <label htmlFor="newComment">Add a comment</label>
       <textarea
         id="newComment"
         value={newComment}
         onChange={(event) => setNewComment(event.target.value)}
-        className="comment-textarea"
+        className="text-textarea"
       />
       <div className="button-container">
         {newComment ? (
