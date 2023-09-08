@@ -37,24 +37,32 @@ export const SortArticlesForm = ({ topics, setArticles }) => {
   };
 
   return (
-    <div className="sort-articles-form">
-      <form onSubmit={handleSubmit}>
-        <label>
-          Sort by:
-          <select value={sortBy} onChange={handleSortByChange}>
-            <option value="created_at">Date</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
-          </select>
-        </label>
-        <label>
-          <select value={sortOrder} onChange={handleSortOrderChange}>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </label>
-        <button type="submit">Sort</button>
-      </form>
+<div className="sort-articles-form">
+  <form onSubmit={handleSubmit} className="form-container">
+    <div className="select-container">
+      <label>
+        
+        <select value={sortBy} onChange={handleSortByChange}>
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+      </label>
     </div>
-  );
+    <div className="select-container">
+      <label>
+        <select value={sortOrder} onChange={handleSortOrderChange}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
+    </div>
+    <div className="sort-button-container">
+      <button type="submit" className="sort-button">
+        Sort
+      </button>
+    </div>
+  </form>
+</div>  
+);
 };

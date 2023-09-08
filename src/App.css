@@ -118,3 +118,61 @@ margin: 10px;
   background-color: white;
   border: 1px solid #1F1300;
 }
+
+form {
+  box-sizing: border-box;
+  padding: rem;
+  background-color: #4a4e69;
+  border: 2px solid #22223b;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  color: white;
+}
+
+.sort-button{
+  padding: 1px;
+  margin: 10px;
+  width: 100px;
+  font-size: 12px;
+  background-color: #BEB2C8;
+
+}
+
+
+.sort-articles-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the select sections horizontally */
+  align-items: center; /* Center the select sections vertically */
+  text-align: center; /* Center-align text within labels */
+}
+
+.select-container {
+  margin: 5px; /* Adjust this for spacing between select sections */
+  
+
+}
+
+.select-container select {
+  margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  width: 100px;
+  background-color: #BEB2C8;
+}
+.select-container label {
+  margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+}
+
+.sort-button-container {
+  margin-top: -20px; /* Adjust this for spacing between select sections and the button */
+}
