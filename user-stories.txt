@@ -1,9 +1,11 @@
 Stories I want to add still
 
 -vote on articles with rendering x
--comment on articles with optimisitc rendering ~
--need to log in to post comments 
+-comment on articles with optimistic rendering ~
+-need to log in to post comments x
 -delete comments by logged in user x
 -delete articles by logged in user 
--Fix how optimistically rendered comments handle added likes -(maybe make it that it depends on who is logged in?)
+-post articles with new topic
+-Fix how optimistically rendered comments handle added likes -(maybe make it that it depends on who is logged in?) - fixed for likes but new comments have a delete button which does not work....
 - add topics as a component of articles view (maybe a drop down?)
+-pagination

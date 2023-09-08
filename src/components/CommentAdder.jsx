@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export const CommentAdder = ({article_id, setComments}) => {
   const [newComment, setNewComment] = useState("");
   const [isError, setIsError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(null)
   const {user} = useContext(UserContext)
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +14,7 @@ export const CommentAdder = ({article_id, setComments}) => {
     postCommentByArticleId(article_id, user, newComment)
       .catch((err) => {
         setIsError(true)
+        setErrorMsg(err);
       });
     setNewComment("");
   };
@@ -22,19 +24,37 @@ export const CommentAdder = ({article_id, setComments}) => {
       return [comment, ...currentComments];
     });
   };
-  if (isError) return <h2>Something went wrong! Please try again</h2>;
+  if (isError)
+    return (
+      <h2>
+        {errorMsg.response.status}: {errorMsg.response.data.msg}
+      </h2>
+    );
   
   return (
-    <>
-    {user ? (<form className="comment-adder" onSubmit={handleSubmit}>
+<div className="add-comments-form">
+  {user ? (
+    <form className="comment-adder" onSubmit={handleSubmit}>
       <label htmlFor="newComment">Add a comment</label>
       <textarea
         id="newComment"
         value={newComment}
         onChange={(event) => setNewComment(event.target.value)}
+        className="comment-textarea"
       />
-      <button type="submit">Add comment</button>
-    </form>) : (<p><Link to="/users">Log in </Link>to post a comment</p>)}
-   </>
+      <div className="button-container">
+        {newComment ? (
+          <button type="submit" className="comments-button">Add comment</button>
+        ) : (
+          <></>
+        )}
+      </div>
+    </form>
+  ) : (
+    <p>
+      <Link to="/users">Log in </Link>to post a comment
+    </p>
+  )}
+</div>
   );
 };

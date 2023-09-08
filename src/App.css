@@ -1,57 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik+Iso&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik+Iso&family=Source+Code+Pro&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Nunito+Sans&family=Rubik+Iso&family=Source+Code+Pro&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+  background-color: #CACF85;
+  font-family: 'Montserrat', sans-serif;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
 
 .card {
-  padding: 2em;
+    
+  border: 2px solid #36413e;
+  padding: 1em;
+  background-color: #8CBA80;
+  margin-top: 5px;
 }
 
-.read-the-docs {
-  color: #888;
-}
-
-.card {
-  border-style: solid;
-  border-color: 1px black;
-  margin: 10px;
-}
-
-.kudos-button {
-  border-style: solid;
-  border-color: 1px black;
-  margin: 5px;
-}
 
 .kudos-button-container {
   display: flex;
@@ -78,3 +48,136 @@ select option{
   padding: 10px;
   font-size: 16px;
 }
+
+h1{
+  font-family: 'Rubik Iso', cursive;
+  color:black;
+  border-style: solid;
+  border-color: 1px #1F1300;
+  background-color: #BEB2C8;
+
+}
+
+.navbar{
+  font-family: 'Source Code Pro', monospace;
+  font-size: large;
+  background-color: #8CBA80;
+  border-style: solid;
+  border-color: 1px #1F1300;
+  
+}
+
+.button{
+  background-color: #BEB2C8;
+border: 1px solid #1F1300;
+padding: 14px;
+font-size: 16px;
+cursor: pointer;
+margin: 10px;
+}
+
+.comments-button{
+  background-color: #8CBA80;
+  border: 1px solid #1F1300;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;  
+  border-style: solid;
+  border-color: 1px black;
+  margin: 5px;
+}
+
+
+.link{
+  color: #36413e;
+}
+
+.avatar{
+  background-color: white;
+  border: 1px solid #1F1300;
+}
+
+form {
+  box-sizing: border-box;
+  padding: rem;
+  background-color: #4a4e69;
+  border: 2px solid #22223b;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+  color: white;
+}
+
+.sort-button{
+  padding: 1px;
+  margin: 10px;
+  width: 100px;
+  font-size: 12px;
+  background-color: #BEB2C8;
+
+}
+
+
+.sort-articles-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
+}
+
+.select-container {
+  margin: 5px; 
+
+}
+
+.select-container select {
+  margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  width: 250px;
+  background-color: #BEB2C8;
+}
+.select-container label {
+  margin-left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+}
+
+.sort-button-container {
+  margin-top: -20px; 
+}
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #CACF85
+}
+
+.comment-adder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 10px; 
+}
+
+.comment-textarea {
+  width: 95%; 
+  resize: vertical; 
+  padding: 10px; 
+  box-sizing: border-box;
+  min-height: 50px;
+
+}
+
+

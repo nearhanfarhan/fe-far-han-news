@@ -8,6 +8,8 @@ export const SingleArticleView = () => {
   const [displayComments, setDisplayComments] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null)
+  const [voted, setVoted] = useState(false)
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -20,12 +22,14 @@ export const SingleArticleView = () => {
       .catch((err) => {
         setIsLoading(false);
         setIsError(true);
+        setErrorMsg(err)
       });
   }, []);
 
   const patchArticleVote = (vote) => {
     updateArticleVote(article_id, vote).catch((err) => {
       setIsError(true);
+      setErrorMsg(err)
     });
   };
   const renderArticleVote = (vote) => {
@@ -38,7 +42,7 @@ export const SingleArticleView = () => {
 
   if (isLoading) return <h2>Loading...</h2>;
 
-  if (isError) return <h2>There was an error!</h2>;
+  if (isError) return <h2>{errorMsg.response.status}: {errorMsg.response.data.msg}</h2>;
 
   return (
     <section className="single-article">
@@ -52,10 +56,11 @@ export const SingleArticleView = () => {
         width="100%"
       />
       <h4>{singleArticle.votes} likes</h4>
+      {voted? (<h2>Thanks for your vote!</h2>):(
       <div className="kudos-button-container">
-        <button className="kudos-button">
+        <button className="button" onClick={()=>{setVoted(true)}}>
           <img
-            src="../../resources/thumbs_up.png"
+            src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44d.svg"
             alt="thumbs up emoji"
             width="25%"
             onClick={() => {
@@ -64,9 +69,9 @@ export const SingleArticleView = () => {
             }}
           />
         </button>
-        <button className="kudos-button">
+        <button className="button" onClick={()=>{setVoted(true)}}>
           <img
-            src="../../resources/thumbs_down.png"
+            src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44e.svg"
             alt="thumbs down emoji"
             width="25%"
             onClick={() => {
@@ -75,12 +80,12 @@ export const SingleArticleView = () => {
             }}
           />
         </button>
-      </div>
+      </div>)}
       <div>
         {displayComments ? (
           <CommentsView setDisplayComments={setDisplayComments} />
         ) : (
-          <button onClick={() => setDisplayComments(true)}>
+          <button onClick={() => setDisplayComments(true)} className="comments-button">
             Click to view {singleArticle.comment_count} comments
           </button>
         )}

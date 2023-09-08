@@ -11,12 +11,13 @@ export const Header = () => {
       {user ? (
         <div>
           <p>Logged in as {user}</p>
-          <button onClick={(() =>{setUser("")})}>Log out</button>
+          <button onClick={(() =>{setUser("")})} className="button">Log out</button>
         </div>
       ) : (
-        <Link to="/users">Log in</Link>
+        <button className="button"><Link to="/users">Log in</Link></button>
       )}
       <Navbar />
     </>
   );
 };
+

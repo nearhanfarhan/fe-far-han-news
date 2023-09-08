@@ -10,13 +10,13 @@ export const UserCard = ({username, name, avatar_url}) => {
     }
 
 return(
-    <section className="card">
+    <div className="card">
         <h3>{username}</h3>
         <p>{name}</p>
-        <img src={avatar_url} width="25%" />
+        <img src={avatar_url} width="25%" className="avatar"/>
         <div>
         <button onClick={handleLogIn}>Log in as user</button>
         </div>
-    </section>
+    </div>
 )
 }
