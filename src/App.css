@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik+Iso&family=Source+Code+Pro&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Nunito+Sans&family=Rubik+Iso&family=Source+Code+Pro&display=swap');
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -13,21 +14,6 @@
 
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
     
   border: 2px solid #36413e;
@@ -36,14 +22,6 @@
   margin-top: 5px;
 }
 
-.cards{
- 
-}
-
-
-.read-the-docs {
-  color: #888;
-}
 
 .kudos-button-container {
   display: flex;
@@ -70,7 +48,7 @@ select option{
   padding: 10px;
   font-size: 16px;
 }
- 
+
 h1{
   font-family: 'Rubik Iso', cursive;
   color:black;
@@ -149,14 +127,13 @@ form {
 .form-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center the select sections horizontally */
-  align-items: center; /* Center the select sections vertically */
-  text-align: center; /* Center-align text within labels */
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
 }
 
 .select-container {
-  margin: 5px; /* Adjust this for spacing between select sections */
-  
+  margin: 5px; 
 
 }
 
@@ -164,7 +141,7 @@ form {
   margin-left: 10px;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
-  width: 100px;
+  width: 250px;
   background-color: #BEB2C8;
 }
 .select-container label {
@@ -174,5 +151,33 @@ form {
 }
 
 .sort-button-container {
-  margin-top: -20px; /* Adjust this for spacing between select sections and the button */
+  margin-top: -20px; 
 }
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #CACF85
+}
+
+.comment-adder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 10px; 
+}
+
+.comment-textarea {
+  width: 95%; 
+  resize: vertical; 
+  padding: 10px; 
+  box-sizing: border-box;
+  min-height: 50px;
+
+}
+
+

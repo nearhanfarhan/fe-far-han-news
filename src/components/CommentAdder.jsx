@@ -32,16 +32,29 @@ export const CommentAdder = ({article_id, setComments}) => {
     );
   
   return (
-    <>
-    {user ? (<form className="comment-adder" onSubmit={handleSubmit}>
+<div className="add-comments-form">
+  {user ? (
+    <form className="comment-adder" onSubmit={handleSubmit}>
       <label htmlFor="newComment">Add a comment</label>
       <textarea
         id="newComment"
         value={newComment}
         onChange={(event) => setNewComment(event.target.value)}
+        className="comment-textarea"
       />
-      {newComment? (<button type="submit">Add comment</button>):(<></>)}
-    </form>) : (<p><Link to="/users">Log in </Link>to post a comment</p>)}
-   </>
+      <div className="button-container">
+        {newComment ? (
+          <button type="submit" className="comments-button">Add comment</button>
+        ) : (
+          <></>
+        )}
+      </div>
+    </form>
+  ) : (
+    <p>
+      <Link to="/users">Log in </Link>to post a comment
+    </p>
+  )}
+</div>
   );
 };

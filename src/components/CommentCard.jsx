@@ -73,7 +73,7 @@ export const CommentCard = ({
           <div className="kudos-button-container">
             <button className="button" onClick={()=>{setVoted(true)}}>
               <img
-                src="../../resources/thumbs_up.png"
+                src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44d.svg"
                 alt="thumbs up emoji"
                 width="25%"
                 onClick={() => {
@@ -84,7 +84,7 @@ export const CommentCard = ({
             </button>
             <button className="button" onClick={()=>{setVoted(true)}}>
               <img
-                src="../../resources/thumbs_down.png"
+                src="https://images.emojiterra.com/google/noto-emoji/unicode-15/color/svg/1f44e.svg"
                 alt="thumbs down emoji"
                 width="25%"
                 onClick={() => {
@@ -100,3 +100,4 @@ export const CommentCard = ({
     </section>
   );
 };
+
